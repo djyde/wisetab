@@ -35,7 +35,6 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
     ]
   }
 }
