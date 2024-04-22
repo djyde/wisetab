@@ -76,7 +76,7 @@ function NewTab() {
               <img className='inline-block max-w-[100px] rounded-lg' src={currentReview.image_url} />
             </div>
 
-            <div className='text-xl leading-relaxed text-left font-light relative'>
+            <div className='text-xl leading-relaxed text-left font-medium relative font-serif-eng text-balance' >
               <div>
                 {currentReview.text}
               </div>
@@ -90,9 +90,7 @@ function NewTab() {
               <div className='bg-[#A79277] w-[100px] h-[4px]' />
             </div>
 
-
-
-            <div className='text-center font-medium'>
+            <div className='text-center font-bold font-serif-eng'>
               {currentReview.author} / {currentReview.title}
             </div>
           </div>

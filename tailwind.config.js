@@ -41,6 +41,9 @@ module.exports = {
     ]
   },
   theme: {
+    fontFamily: {
+      "serif-eng": ["Sedan", "serif"],
+    },
     extend: {},
   },
   plugins: [

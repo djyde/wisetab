@@ -1,6 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+  @font-face {
+    font-family: "Sedan";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(data-base64:~assets/fonts/Sedan-Regular.ttf);
+  }
+}
+
+
 body {
   font-size: 16px;
+  @apply antialiased;
 }
