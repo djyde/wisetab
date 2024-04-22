@@ -7,6 +7,10 @@ import { QueryClientProvider, useMutation, useQuery } from '@tanstack/react-quer
 import { queryClient } from '~utils/queryclient'
 import cn from 'classnames'
 import { Providers } from '~components/Providers'
+import { LuSettings } from 'react-icons/lu'
+import { themes } from '~themes'
+import { themeChange } from 'theme-change'
+
 function NewTab() {
 
   const review = useQuery({
@@ -30,13 +34,37 @@ function NewTab() {
       </>
     )
   }
-  
+
   const random = Math.floor(Math.random() * 10)
 
   const currentReview = review.data?.highlights[random]
 
   return (
     <div>
+      <nav className='p-3 px-6 flex justify-end'>
+        <div className='flex gap-3 items-center'>
+         
+          <div>
+            <select className='select select-xs' data-choose-theme>
+              {themes.map(theme => {
+                return (
+                  <option key={theme} value={theme}>{theme}</option>
+                )
+              })}
+            </select>
+          </div>
+
+          <div>
+            <button onClick={_ => {
+              chrome.runtime.openOptionsPage()
+            }} className='btn btn-xs'>
+              <LuSettings />
+              Settings
+            </button>
+          </div>
+
+        </div>
+      </nav>
       {currentReview && (
         <>
           <div className={
@@ -52,7 +80,7 @@ function NewTab() {
               <div>
                 {currentReview.text}
               </div>
-              <div className=' text-black/50 text-sm mt-12 italic text-left top-[12px] left-[500px] w-[320px]'>
+              <div className=' text-base/50 text-sm mt-12 italic text-left top-[12px] left-[500px] w-[320px]'>
                 {currentReview.note}
               </div>
             </div>
@@ -75,6 +103,7 @@ function NewTab() {
 }
 
 export default function Page() {
+
   return (
     <Providers>
       <NewTab />
