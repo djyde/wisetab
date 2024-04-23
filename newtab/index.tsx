@@ -76,11 +76,11 @@ function NewTab() {
               <img className='inline-block max-w-[100px] rounded-lg' src={currentReview.image_url} />
             </div>
 
-            <div className='text-xl leading-relaxed text-left font-medium relative font-serif-eng text-balance' >
+            <div className='text-xl leading-relaxed text-center font-medium relative font-serif-eng text-balance' >
               <div>
                 {currentReview.text}
               </div>
-              <div className=' text-base/50 text-sm mt-12 italic text-left top-[12px] left-[500px] w-[320px]'>
+              <div className=' text-base/50 text-sm mt-12 italic text-center top-[12px] left-[500px] w-[320px]'>
                 {currentReview.note}
               </div>
             </div>
