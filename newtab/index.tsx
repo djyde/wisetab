@@ -35,7 +35,10 @@ function NewTab() {
     )
   }
 
-  const random = Math.floor(Math.random() * 10)
+  const highlightCount = review.data?.highlights.length || 0
+
+  // random index base on highlight count
+  const random = Math.floor(Math.random() * highlightCount)
 
   const currentReview = review.data?.highlights[random]
 
@@ -76,7 +79,7 @@ function NewTab() {
               <img className='inline-block max-w-[100px] rounded-lg' src={currentReview.image_url} />
             </div>
 
-            <div className='text-xl leading-relaxed text-center font-medium relative font-serif-eng text-balance' >
+            <div className='text-xl leading-relaxed text-center font-medium relative font-serif-eng ' >
               <div>
                 {currentReview.text}
               </div>
