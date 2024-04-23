@@ -7,17 +7,22 @@ async function refreshDailyReview() {
   await storage.set(StorageKey.DailyReview, dailyReviewList)
 }
 
-async function main() {
-  await refreshDailyReview()
-  setInterval(async () => {
+const alarmName = 'refreshDailyReview'
+
+chrome.runtime.onInstalled.addListener(async () => {
+  console.log('set alarm')
+  await chrome.alarms.create(alarmName, { periodInMinutes: 60 })
+})
+
+
+chrome.alarms.onAlarm.addListener(async (alarm) => {
+  if (alarm.name === alarmName) {
     await refreshDailyReview()
-  }, 1000 * 60 * 60 * 1)
-}
+  }
+})
 
 storage.watch({
   [StorageKey.ReadwiseToken]: async () => {
     await refreshDailyReview()
   }
 })
-
-main()
