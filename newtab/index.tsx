@@ -42,11 +42,20 @@ function NewTab() {
 
   const currentReview = review.data?.highlights[random]
 
+  const renderTextWithLinks = (text) => {
+    const regex = /\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g
+    return text.replace(
+      regex,
+      (match, label, url) =>
+        `<a href="${url}" target="_blank" rel="noopener noreferrer" class="link-style">${label}</a>`
+    )
+  }
+
   return (
     <div>
       <nav className='p-3 px-6 flex justify-end'>
         <div className='flex gap-3 items-center'>
-         
+
           <div>
             <select className='select select-xs' data-choose-theme>
               {themes.map(theme => {
@@ -80,9 +89,7 @@ function NewTab() {
             </div>
 
             <div className='text-xl leading-relaxed text-center font-medium relative font-serif-eng ' >
-              <div>
-                {currentReview.text}
-              </div>
+              <div dangerouslySetInnerHTML={{ __html: renderTextWithLinks(currentReview.text) }} />
               <div className=' text-base/50 text-sm mt-12 italic text-center top-[12px] left-[500px] w-[320px]'>
                 {currentReview.note}
               </div>
