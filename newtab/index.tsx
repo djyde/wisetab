@@ -13,9 +13,17 @@ import { themeChange } from 'theme-change'
 import MarkdownIt from 'markdown-it';
 import DOMPurify from 'dompurify';
 
-const md = new MarkdownIt();
-
 function NewTab() {
+  const md = new MarkdownIt();
+  md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
+    const aIndex = tokens[idx].attrIndex('class');
+    if (aIndex < 0) {
+      tokens[idx].attrPush(['class', 'link link-primary']);
+    } else {
+      tokens[idx].attrs[aIndex][1] += ' link link-primary';
+    }
+    return self.renderToken(tokens, idx, options);
+  };
 
   const review = useQuery({
     queryKey: ['dailyReview'],
@@ -90,7 +98,7 @@ function NewTab() {
             </div>
 
             <div className='text-xl leading-relaxed text-center font-medium relative font-serif-eng ' >
-              <div className='markdown-rendered' dangerouslySetInnerHTML={{ __html: renderTextWithLinks(currentReview.text) }} />
+              <div dangerouslySetInnerHTML={{ __html: renderTextWithLinks(currentReview.text) }} />
               <div className=' text-base/50 text-sm mt-12 italic text-center top-[12px] left-[500px] w-[320px]'>
                 {currentReview.note}
               </div>

@@ -18,14 +18,3 @@ body {
   font-size: 16px;
   @apply antialiased;
 }
-
-.markdown-rendered a {
-  color: #3498db;
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-
-.markdown-rendered a:hover {
-  color: #0056b3;
-  text-decoration: none;
-}
