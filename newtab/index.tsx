@@ -10,6 +10,10 @@ import { Providers } from '~components/Providers'
 import { LuSettings } from 'react-icons/lu'
 import { themes } from '~themes'
 import { themeChange } from 'theme-change'
+import MarkdownIt from 'markdown-it';
+import DOMPurify from 'dompurify';
+
+const md = new MarkdownIt();
 
 function NewTab() {
 
@@ -43,12 +47,9 @@ function NewTab() {
   const currentReview = review.data?.highlights[random]
 
   const renderTextWithLinks = (text) => {
-    const regex = /\[([^\]]+)\]\((https?:\/\/[^\s]+)\)/g
-    return text.replace(
-      regex,
-      (match, label, url) =>
-        `<a href="${url}" target="_blank" rel="noopener noreferrer" class="link-style">${label}</a>`
-    )
+    const renderedText = md.render(text);
+    const sanitizedText = DOMPurify.sanitize(renderedText);
+    return sanitizedText;
   }
 
   return (

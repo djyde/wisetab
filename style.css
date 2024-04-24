@@ -18,13 +18,3 @@ body {
   font-size: 16px;
   @apply antialiased;
 }
-
-.link-style {
-  color: #007bff;
-  text-decoration: underline;
-}
-
-.link-style:hover {
-  color: #0056b3;
-  text-decoration: none;
-}
