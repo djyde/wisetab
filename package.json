@@ -1,7 +1,7 @@
 {
   "name": "wisetab",
   "displayName": "Wisetab",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Show Readwise highlight in your new tab page",
   "author": "Randy Lu",
   "scripts": {
