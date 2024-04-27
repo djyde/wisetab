@@ -99,7 +99,7 @@ function NewTab() {
 
             <div className='text-xl leading-relaxed text-center font-medium relative font-serif-eng ' >
               <div dangerouslySetInnerHTML={{ __html: renderTextWithLinks(currentReview.text) }} />
-              <div className=' text-base/50 text-sm mt-12 italic text-center top-[12px] left-[500px] w-[320px]'>
+              <div className=' text-base/50 text-sm mt-12 italic text-center top-[12px] mx-auto w-[320px]'>
                 {currentReview.note}
               </div>
             </div>
